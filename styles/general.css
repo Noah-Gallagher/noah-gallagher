@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+    --colour1: #000;
+    --colour2: #0e172a;
+    --colour3: #007382;
+    --colour4: #80d47c;
+    --colour5: #fff;
+
+    --nav-height: 100px;
+
+    font-family: "t26-carbon", Arial;
+
+    color: var(--colour5);
+}
+
+:root {
+    --scroll: 0;
+
+    /*scrollbar-width: none;*/
+}
+
+body {
+    background-color: var(--colour1);
+}

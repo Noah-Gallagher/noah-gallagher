@@ -1,0 +1,66 @@
+#navbar-toggle {
+    display: none;
+}
+
+nav {
+    height: var(--nav-height);
+
+    display: flex;
+    justify-content: space-between;
+
+    padding: 0 3em;
+
+    font-size: 1rem;
+}
+
+nav .pages {
+    display: flex;
+    align-items: center;
+    gap: 3em;
+
+    height: 100%;
+}
+
+nav .pages a {
+    text-decoration: none;
+
+    font-size: 1.25em;
+    color: transparent;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+nav .pages a:hover::before,
+nav .pages a:hover::after {
+    translate: 0 100%;
+}
+
+nav .pages a::before,
+nav .pages a::after {
+    content: attr(data-value);
+    position: absolute;
+    bottom: 100%;
+
+    color: var(--colour5);
+
+    transition: all 0.5s;
+}
+
+nav .pages a::after {
+    left: 0;
+    bottom: 0;
+}
+
+nav .socials {
+    display: flex;
+    align-items: center;
+    gap: 3em;
+
+    height: 100%;
+}
+
+nav .socials i {
+    font-size: 1.25em;
+}
