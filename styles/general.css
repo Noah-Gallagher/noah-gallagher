@@ -20,7 +20,7 @@
 :root {
     --scroll: 0;
 
-    /*scrollbar-width: none;*/
+    scrollbar-width: none;
 }
 
 body {
