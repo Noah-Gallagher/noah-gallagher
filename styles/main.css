@@ -1,3 +1,154 @@
 main {
     height: calc(100vh - var(--nav-height));
+
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 10em;
+
+    overflow: hidden;
+
+    padding: 3em;
+}
+
+main .background {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    opacity: calc(((max(var(--scroll), 75) - 75) / 25) / 50);
+
+    z-index: -1;
+}
+
+main .background span {
+    font-size: calc((100vh - var(--nav-height)) / 2);
+    text-align: center;
+    width: 100vw;
+}
+
+main .box {
+    width: 285px;
+    height: 400px;
+    min-height: 400px;
+
+    position: relative;
+
+    padding: 1em;
+
+    border: 1px solid var(--colour5);
+    border-radius: 1em;
+
+    background-color: rgba(255, 255, 255, 0.05);
+
+    backdrop-filter: blur(8px);
+
+    box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.05),
+    -3px -3px 10px rgba(0, 0, 0, 0.05);
+
+    opacity: calc(((max(var(--scroll), 75) - 75) / 25));
+
+    overflow: hidden;
+}
+
+main .box h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+main .box a {
+    position: absolute;
+    bottom: 1em;
+
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+
+    text-decoration: none;
+}
+
+main .box a p {
+    text-decoration: none;
+}
+
+main .box p {
+    font-size: 1.25em;
+    line-height: 1.25em;
+}
+
+main .box a:hover i {
+    animation: read-more 1s ease-in-out infinite;
+}
+
+main .box.about {
+    translate: calc(-25% + (25%) * ((max(var(--scroll), 75) - 75) / 25)) 0;
+}
+
+main .box.projects {
+    margin-top: auto;
+}
+
+main .skills-preview {
+    height: calc(100% - 7em);
+    flex-grow: 1;
+
+    position: relative;
+
+    translate: 0 calc(50% - 50% * ((max(var(--scroll), 25) - 25) / 75));
+    scale: calc(((max(var(--scroll), 50) - 50) / 50) / 2 + 0.5);
+    opacity: calc(((max(var(--scroll), 75) - 75) / 25));
+}
+
+main .skills-preview .background-text {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 6em;
+
+    opacity: calc(((max(var(--scroll), 75) - 75) / 25) / 2);
+}
+
+main .skills-preview .skill {
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 5em;
+
+    translate: -50% -50%;
+
+    filter: drop-shadow(0 0 5px var(--colour3));
+}
+
+main .skills-preview canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+@keyframes read-more {
+    from {
+        translate: 0;
+    }
+
+    50% {
+        translate: 5px 0;
+    }
+
+    to {
+        translate: 0;
+    }
 }

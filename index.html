@@ -6,17 +6,17 @@
 
         <link rel="stylesheet" href="https://use.typekit.net/swu3nqq.css">
 
-        <script src="https://kit.fontawesome.com/9055024f82.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/71e00c3df4.js" crossorigin="anonymous"></script>
 
         <title>Noah Gallagher Summers</title>
 
         <link rel="stylesheet" href="styles/general.css">
         <link rel="stylesheet" href="styles/nav.css">
+        <link rel="stylesheet" href="styles/sidebar.css">
         <link rel="stylesheet" href="styles/header.css">
         <link rel="stylesheet" href="styles/main.css">
 
         <script src="script.js" defer></script>
-        <script type="module" src="three.js" defer></script>
     </head>
     <body>
         <div class="cursor" id="cursor"></div>
@@ -47,13 +47,60 @@
                 <a href="contact" class="hack-effect hidden">Contact</a>
             </div>
             <div class="socials">
-                <i class="fa-brands fa-github"></i>
+                <a href="https://github.com/noah-gallagher" target="_blank">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <label for="sidebar-toggle">
+                    <i class="fa-solid fa-cog"></i>
+                </label>
             </div>
         </nav>
 
+        <input type="checkbox" id="sidebar-toggle">
+        <label class="black-overlay" for="sidebar-toggle"></label>
+        <aside>
+            <label class="sidebar-close" for="sidebar-toggle">
+                <i class="fa-solid fa-xmark"></i>
+            </label>
+
+            <div class="sidebar-property">
+                <h2>Graphics</h2>
+                <div class="sidebar-property-select">
+                    <div class="arrow" id="graphics-arrow-left">&lt;</div>
+                    <div class="sidebar-property-values" id="graphics-values">
+                        <p>Fast</p>
+                        <p>Standard</p>
+                        <p>Fancy</p>
+                    </div>
+                    <div class="arrow" id="graphics-arrow-right">&gt;</div>
+                </div>
+            </div>
+        </aside>
+
         <main>
-            <div class="about-box"></div>
-            <canvas class="skills-preview" id="skills-preview"></canvas>
+            <div class="background">
+                <span>Modern</span>
+                <span>Frontend</span>
+            </div>
+            <div class="about box">
+                <h1 class="hack-effect hidden">About Me</h1>
+                <p>I am a 14 year-old frontend website developer. I have been programming for 3 years and create professional modern websites.</p>
+                <a href="">
+                    <p>Read More</p>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="skills-preview" id="skills-preview">
+                <h1 class="background-text">Skills</h1>
+                <canvas id="lines"></canvas>
+
+                <img class="skill" src="images/html.png" alt="HTML">
+                <img class="skill" src="images/css.png" alt="CSS">
+                <img class="skill" src="images/js.png" alt="Javascript" style="scale: 0.75;">
+                <img class="skill" src="images/cs.png" alt="C#">
+                <img class="skill" src="images/python.png" alt="Python">
+            </div>
+            <div class="projects box"></div>
         </main>
 
         <footer></footer>

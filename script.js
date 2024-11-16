@@ -1,3 +1,38 @@
+// Sidebar
+
+const graphicsLeft = document.getElementById("graphics-arrow-left");
+const graphicsRight = document.getElementById("graphics-arrow-right");
+const grpahicsValues = document.getElementById("graphics-values");
+
+window.graphics = localStorage.getItem("graphics") || 2;
+
+updateProperties();
+
+graphicsLeft.addEventListener("click", () => {
+    window.graphics -= 1;
+
+    updateProperties();
+});
+
+graphicsRight.addEventListener("click", () => {
+    window.graphics += 1;
+
+    updateProperties();
+});
+
+function updateProperties() {
+    if (window.graphics < 0) window.graphics = 2;
+    if (window.graphics > 2) window.graphics = 0;
+
+    localStorage.setItem("graphics", window.graphics);
+
+    Array.from(grpahicsValues.children).forEach((val) => {
+        val.style.translate = `0 -${window.graphics * 100}%`;
+    });
+
+    document.body.style.setProperty("--graphics", window.graphics);
+}
+
 // Cursor
 
 const cursor = document.getElementById("cursor");
@@ -29,7 +64,6 @@ setScrollVar();
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-        console.log(entry)
         if (entry.isIntersecting) {
             entry.target.classList.add("show");
 
@@ -66,8 +100,155 @@ function textEffect(el) {
             return chars[Math.floor(Math.random() * 26)]
         }).join(""));
 
+        el.innerText = el.getAttribute("data-value");
+
         if (i >= val.length) clearInterval(interval);
 
         i += 1 / 8;
     }, 30);
 }
+
+// Skills section
+
+const wrapper = document.getElementById("skills-preview");
+const skills = document.getElementsByClassName("skill");
+
+createAllLines();
+
+function connectDots(dot1, dot2) {
+    const canvas = document.getElementById("lines");
+    const ctx = canvas.getContext('2d');
+
+    // Resize the canvas to match the viewport size
+    function resizeCanvas() {
+        canvas.width = wrapper.offsetWidth;
+        canvas.height = wrapper.offsetHeight;
+
+        // Redraw all lines when resizing
+        lines.forEach(line => drawLine(line.dot1, line.dot2));
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // Draw a line connecting two dots
+    function drawLine(dot1, dot2) {
+        let tmp = dot1.style.left.split("");
+        tmp.pop();
+        tmp.join("");
+        const topVal1 = parseFloat((tmp.join(""))) * canvas.width / 100;
+
+        tmp = dot2.style.left.split("");
+        tmp.pop();
+        tmp.join("");
+        const topVal2 = parseFloat((tmp.join(""))) * canvas.width / 100;
+
+        tmp = dot1.style.top.split("");
+        tmp.pop();
+        tmp.join("");
+        const leftVal1 = parseFloat((tmp.join(""))) * canvas.height / 100;
+
+        tmp = dot2.style.top.split("");
+        tmp.pop();
+        tmp.join("");
+        const leftVal2 = parseFloat((tmp.join(""))) * canvas.height / 100;
+
+        const rect1 = dot1.getBoundingClientRect();
+        const rect2 = dot2.getBoundingClientRect();
+
+        const x1 = topVal1;
+        const y1 = leftVal1;
+        const x2 = topVal2;
+        const y2 = leftVal2;
+
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.strokeStyle = '#ffffff40';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+    }
+
+    // Store lines so they can be redrawn on resize
+    window.lines.push({ dot1, dot2 });
+    drawLine(dot1, dot2);
+
+    // Draw the new line
+    drawLine(dot1, dot2);
+}
+
+function createAllLines() {
+    window.lines = [];
+
+    Array.from(skills).forEach((skill1, skillIdx1) => {
+        Array.from(skills).forEach((skill2, skillIdx2) => {
+            if (skillIdx1 > skillIdx2) {
+                connectDots(skill1, skill2);
+            }
+        });
+    });
+}
+
+const positions = [[30, 80], [100, 40], [10, 60], [50, 100], [60, 40], [80, 20]];
+
+randomisePositions();
+
+Array.from(skills).forEach((skill) => {
+    skill.style.left = `${skill.getAttribute("data-target-x")}%`;
+    skill.style.top = `${skill.getAttribute("data-target-y")}%`;
+});
+
+setInterval(() => {
+    randomisePositions();
+}, 10000);
+
+function randomisePositions() {
+    let arr = Array.from(positions);
+
+    Array.from(skills).forEach((skill) => {
+        const item = arr[Math.floor(Math.random() * arr.length)];
+
+        skill.setAttribute("data-target-x", item[0]);
+        skill.setAttribute("data-target-y", item[1]);
+
+        const i = arr.indexOf(item);
+        if (i > -1) {
+            arr.splice(i, 1);
+        }
+    });
+}
+
+let lastTimestamp = 0;
+
+function gameLoop(timestamp) {
+    let delta = (timestamp - lastTimestamp) / 1000;
+    lastTimestamp = timestamp;
+
+    if (window.graphics > 0) {
+        Array.from(skills).forEach((skill) => {
+            let xPos = parseFloat(skill.getAttribute("data-x")) || Math.random() * 100;
+            let yPos = parseFloat(skill.getAttribute("data-y")) || Math.random() * 100;
+    
+            xPos += (skill.getAttribute("data-target-x") - xPos) / 3 * delta;
+            yPos += (skill.getAttribute("data-target-y") - yPos) / 3 * delta;
+    
+            skill.style.left = `${xPos}%`;
+            skill.style.top = `${yPos}%`;
+    
+            skill.setAttribute("data-x", xPos);
+            skill.setAttribute("data-y", yPos);
+        });
+    }
+
+    if (window.graphics == 2) {
+        createAllLines();
+    } else {
+        const canvas = document.getElementById("lines");
+
+        canvas.width = wrapper.offsetWidth;
+        canvas.height = wrapper.offsetHeight;
+    }
+
+    requestAnimationFrame(gameLoop);
+}
+
+requestAnimationFrame(gameLoop);

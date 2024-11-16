@@ -11,6 +11,7 @@
     --colour5: #fff;
 
     --nav-height: 100px;
+    --sidebar-width: 300px;
 
     font-family: "t26-carbon", Arial;
 
@@ -32,7 +33,7 @@ body {
     top: 50%;
     left: 50%;
 
-    height: 300px;
+    height: 350px;
     aspect-ratio: 1;
 
     translate: -50% -50%;
@@ -43,6 +44,8 @@ body {
     opacity: 0.5;
 
     animation: cursor 20s infinite;
+
+    z-index: -1;
 }
 
 .cursor-blur {
@@ -50,6 +53,8 @@ body {
     inset: 0;
 
     backdrop-filter: blur(50px);
+
+    z-index: -1;
 }
 
 @keyframes cursor {

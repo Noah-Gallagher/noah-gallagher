@@ -60,11 +60,19 @@ nav .pages a::after {
 nav .socials {
     display: flex;
     align-items: center;
-    gap: 3em;
+    gap: 1.5em;
 
     height: 100%;
 }
 
 nav .socials i {
     font-size: 1.25em;
+
+    cursor: pointer;
+
+    transition: scale 0.25s;
+}
+
+nav .socials i:hover {
+    scale: 1.1;
 }
