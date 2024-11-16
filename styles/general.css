@@ -4,8 +4,8 @@
 
     box-sizing: border-box;
 
-    --colour1: #000;
-    --colour2: #0e172a;
+    --colour1: #0e172a;
+    --colour2: #00425e;
     --colour3: #007382;
     --colour4: #80d47c;
     --colour5: #fff;
@@ -24,5 +24,44 @@
 }
 
 body {
-    background-color: var(--colour1);
+    background-color: var(--colour2);
+}
+
+.cursor {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+    height: 300px;
+    aspect-ratio: 1;
+
+    translate: -50% -50%;
+
+    background-image: linear-gradient(var(--colour3), var(--colour4));
+    border-radius: 50%;
+
+    opacity: 0.5;
+
+    animation: cursor 20s infinite;
+}
+
+.cursor-blur {
+    position: fixed;
+    inset: 0;
+
+    backdrop-filter: blur(50px);
+}
+
+@keyframes cursor {
+    from {
+        rotate: 0deg;
+    }
+
+    50% {
+        scale: 1 1.5;
+    }
+
+    to {
+        rotate: 360deg;
+    }
 }

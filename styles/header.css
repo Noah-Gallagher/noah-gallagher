@@ -14,7 +14,7 @@ header {
 header .header-background {
     position: fixed;
     inset: 0;
-    background-color: var(--colour2);
+    background-color: var(--colour1);
 
     opacity: calc(1 - (((max(var(--scroll), 50) - 50) / 50)));
 }
@@ -52,7 +52,11 @@ header .header-text .line {
 }
 
 header .header-text .line .name {
-    color: var(--colour4);
+    background-image: linear-gradient(90deg, var(--colour3), var(--colour4));
+    background-clip: text;
+    color: transparent;
+
+    animation: name 1s ease-in-out infinite;
 }
 
 @keyframes header-scroll {
@@ -60,6 +64,18 @@ header .header-text .line .name {
         translate: 0;
         opacity: 1;
     }
+}
+
+@keyframes name {
+    0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 @media (max-width: 600px) {

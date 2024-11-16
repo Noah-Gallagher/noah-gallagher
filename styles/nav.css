@@ -3,6 +3,8 @@
 }
 
 nav {
+    position: sticky;
+    top: 0;
     height: var(--nav-height);
 
     display: flex;
@@ -11,6 +13,8 @@ nav {
     padding: 0 3em;
 
     font-size: 1rem;
+
+    opacity: calc(((max(var(--scroll), 50) - 50) / 50));
 }
 
 nav .pages {
