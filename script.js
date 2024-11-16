@@ -41,7 +41,7 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 const hiddenElements = document.querySelectorAll('.hidden');
-hiddenElements.forEach((el) => observer.observe (el));
+hiddenElements.forEach((el) => observer.observe(el));
 
 // Text hack effect
 
@@ -68,6 +68,6 @@ function textEffect(el) {
 
         if (i >= val.length) clearInterval(interval);
 
-        i += 1 / 5;
+        i += 1 / 8;
     }, 30);
 }
