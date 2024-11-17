@@ -19,6 +19,7 @@ main .background {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
 
     opacity: calc(((max(var(--scroll), 75) - 75) / 25) / 50);
 
@@ -113,7 +114,11 @@ main .skills-preview .background-text {
 
     font-size: 6em;
 
-    opacity: calc(((max(var(--scroll), 75) - 75) / 25) / 2);
+    text-shadow: 0 0 10px #ffffff80;
+
+    opacity: calc((max(var(--scroll), 75) - 75) / 25);
+
+    z-index: 2;
 }
 
 main .skills-preview .skill {
@@ -150,5 +155,46 @@ main .skills-preview canvas {
 
     to {
         translate: 0;
+    }
+}
+
+@media (max-width: 1150px) {
+    main {
+        flex-direction: column;
+        align-items: center;
+        height: unset;
+    }
+
+    main .background span {
+        font-size: 10em;
+    }
+
+    main .box.about {
+        translate: 0;
+    }
+
+    main .box.projects {
+        margin: 0;
+    }
+
+    main .skills-preview {
+        height: 500px;
+        width: 50%;
+
+        translate: 0;
+        scale: 1;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 0.75rem;
+    }
+
+    main .box {
+        height: unset;
+        min-height: unset;
+
+        padding-bottom: 3.5em;
     }
 }

@@ -82,6 +82,10 @@ aside .sidebar-property-select {
 aside .sidebar-property-select .arrow {
     font-size: 1.25em;
 
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
     cursor: pointer;
 }
 

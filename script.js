@@ -4,7 +4,7 @@ const graphicsLeft = document.getElementById("graphics-arrow-left");
 const graphicsRight = document.getElementById("graphics-arrow-right");
 const grpahicsValues = document.getElementById("graphics-values");
 
-window.graphics = localStorage.getItem("graphics") || 2;
+window.graphics = parseInt(localStorage.getItem("graphics") || 2);
 
 updateProperties();
 
@@ -87,6 +87,11 @@ const chars = [
 ];
 
 function textEffect(el) {
+    if (window.graphics == 0) {
+        el.setAttribute("data-value", el.innerText);
+        return;
+    }
+
     const val = el.innerText;
 
     let i = 0;
@@ -188,7 +193,7 @@ function createAllLines() {
     });
 }
 
-const positions = [[30, 80], [100, 40], [10, 60], [50, 100], [60, 40], [80, 20]];
+const positions = [[20, 100], [100, 80], [0, 60], [60, 40], [80, 20], [40, 0]];
 
 randomisePositions();
 
@@ -209,6 +214,8 @@ function randomisePositions() {
 
         skill.setAttribute("data-target-x", item[0]);
         skill.setAttribute("data-target-y", item[1]);
+
+        skill.style.zIndex = 1 + Math.round(Math.random());
 
         const i = arr.indexOf(item);
         if (i > -1) {
