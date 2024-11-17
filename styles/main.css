@@ -21,7 +21,7 @@ main .background {
     align-items: center;
     justify-content: space-around;
 
-    opacity: calc(((max(var(--scroll), 75) - 75) / 25) / 50);
+    opacity: calc(((max(var(--scroll), 75) - 75) / 25) / 25);
 
     z-index: -1;
 }

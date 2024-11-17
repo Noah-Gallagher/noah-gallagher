@@ -19,12 +19,33 @@ nav {
     z-index: 99;
 }
 
+nav .nav-overlay {
+    position: fixed;
+    inset: 0;
+
+    background-color: #000;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: opacity 0.5s;
+}
+
 nav .pages {
     display: flex;
     align-items: center;
     gap: 3em;
 
     height: 100%;
+
+    transition: translate 0.5s;
+}
+
+nav .pages .close-nav {
+    display: none;
+
+    font-size: 2em;
 }
 
 nav .pages a {
@@ -59,6 +80,12 @@ nav .pages a::after {
     bottom: 0;
 }
 
+nav .nav-hamburger {
+    display: none;
+
+    font-size: 2em;
+}
+
 nav .socials {
     display: flex;
     align-items: center;
@@ -79,9 +106,51 @@ nav .socials i:hover {
     scale: 1.1;
 }
 
+#navbar-toggle:checked ~ nav {
+    opacity: 1;
+}
+
+#navbar-toggle:checked ~ nav .pages {
+    translate: 0;
+}
+
+#navbar-toggle:checked ~ nav .nav-overlay {
+    opacity: 0.5;
+
+    pointer-events: all;
+}
+
 @media (max-width: 500px) {
     nav {
         justify-content: end;
+        align-items: center;
+    }
+
+    nav .pages {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 300px;
+        max-width: 100%;
+
+        flex-direction: column;
+        align-items: unset;
+        justify-content: unset;
+
+        padding: 2em;
+
+        translate: 100% 0;
+
+        background-color: var(--colour3);
+    }
+
+    nav .pages .close-nav {
+        display: block;
+    }
+
+    nav .nav-hamburger {
+        display: block;
     }
 
     nav .socials {
