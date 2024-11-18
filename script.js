@@ -43,13 +43,13 @@ const cursor = document.getElementById("cursor");
 const skillsText = document.getElementById("skills-text");
 
 document.addEventListener("mousemove", (event) => {
-    if (window.graphics == 0) {
+    if (window.graphics < 2) {
+        skillsText.style.animation = "none";
+    } else if (window.graphics == 0) {
         cursor.style.display = "none";
         skillsText.style.textShadow = "unset";
 
         return;
-    } else if (window.graphics < 2) {
-        skillsText.style.animation = "none";
     } else if (window.graphics == 2) {
         skillsText.style.animation = "hover 5s ease-in-out infinite";
     } else {
@@ -237,7 +237,9 @@ Array.from(skills).forEach((skill) => {
 });
 
 setInterval(() => {
-    randomisePositions();
+    if (window.graphics > 0) {
+        randomisePositions();
+    }
 }, 10000);
 
 function randomisePositions() {
