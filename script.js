@@ -36,15 +36,44 @@ function updateProperties() {
 // Cursor
 
 const cursor = document.getElementById("cursor");
+const skillsText = document.getElementById("skills-text");
 
 document.addEventListener("mousemove", (event) => {
+    if (window.graphics == 0) {
+        cursor.style.display = "none";
+        skillsText.style.textShadow = "unset";
+
+        return;
+    } else if (window.graphics < 2) {
+        skillsText.style.animation = "none";
+    } else if (window.graphics == 2) {
+        skillsText.style.animation = "hover 5s ease-in-out infinite";
+    } else {
+        cursor.style.display = "block";
+    }
+
     const {clientX, clientY} = event;
 
     cursor.animate({
         left: `${clientX}px`,
         top: `${clientY}px`
     }, {duration: 3000, fill: "forwards"});
+
+    const xChange = (clientX / window.innerWidth - 0.5) * 2;
+    const yChange = (clientY / window.innerHeight - 0.5) * 2;
+
+    text3d(skillsText, 10, -xChange, -yChange, "#ccc");
 });
+
+function text3d(el, layersNum, xPos, yPos, colour) {
+    let layers = [];
+
+    for (let layer = 0; layer < layersNum; layer += 1) {
+        layers.push(`${xPos * (layer + 1)}px ${yPos * (layer + 1)}px 0 ${colour}`);
+    }
+
+    el.style.textShadow = layers.join(",");
+}
 
 // Scroll animations
 
@@ -109,7 +138,7 @@ function textEffect(el) {
 
         if (i >= val.length) clearInterval(interval);
 
-        i += 1 / 8;
+        i += 1 / 5;
     }, 30);
 }
 
@@ -117,6 +146,7 @@ function textEffect(el) {
 
 const wrapper = document.getElementById("skills-preview");
 const skills = document.getElementsByClassName("skill");
+
 
 createAllLines();
 

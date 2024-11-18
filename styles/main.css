@@ -114,8 +114,6 @@ main .skills-preview .background-text {
 
     font-size: 6em;
 
-    text-shadow: 0 0 10px #ffffff80;
-
     opacity: calc((max(var(--scroll), 75) - 75) / 25);
 
     z-index: 2;
@@ -151,6 +149,20 @@ main .skills-preview canvas {
 
     50% {
         translate: 5px 0;
+    }
+
+    to {
+        translate: 0;
+    }
+}
+
+@keyframes hover {
+    from {
+        translate: 0;
+    }
+
+    50% {
+        translate: 0 -10px;
     }
 
     to {

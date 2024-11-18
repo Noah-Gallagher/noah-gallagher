@@ -120,7 +120,7 @@ nav .socials i:hover {
     pointer-events: all;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 650px) {
     nav {
         justify-content: end;
         align-items: center;
