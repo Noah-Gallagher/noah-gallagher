@@ -4,7 +4,11 @@ const graphicsLeft = document.getElementById("graphics-arrow-left");
 const graphicsRight = document.getElementById("graphics-arrow-right");
 const grpahicsValues = document.getElementById("graphics-values");
 
-window.graphics = parseInt(localStorage.getItem("graphics") || 2);
+if (window.innerWidth < 650) {
+    window.graphics = parseInt(localStorage.getItem("graphics") || 1);
+} else {
+    window.graphics = parseInt(localStorage.getItem("graphics") || 2);
+}
 
 updateProperties();
 
