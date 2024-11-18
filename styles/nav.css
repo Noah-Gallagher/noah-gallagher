@@ -122,7 +122,6 @@ nav .socials i:hover {
 
 @media (max-width: 650px) {
     nav {
-        justify-content: end;
         align-items: center;
     }
 
@@ -151,9 +150,5 @@ nav .socials i:hover {
 
     nav .nav-hamburger {
         display: block;
-    }
-
-    nav .socials {
-        display: none;
     }
 }
