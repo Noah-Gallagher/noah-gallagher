@@ -100,11 +100,11 @@ setScrollVar();
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-
-            if (entry.target.classList.contains("hack-effect")) {
+            if (entry.target.classList.contains("hack-effect") && !entry.target.classList.contains("show")) {
                 textEffect(entry.target);
             }
+
+            entry.target.classList.add("show");
         }
     });
 });
