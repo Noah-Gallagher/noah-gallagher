@@ -70,3 +70,10 @@ body {
         rotate: 360deg;
     }
 }
+
+@media (max-width: 650px) {
+    .cursor,
+    .cursor-blur {
+        display: none;
+    }
+}

@@ -2,7 +2,7 @@
 
 const graphicsLeft = document.getElementById("graphics-arrow-left");
 const graphicsRight = document.getElementById("graphics-arrow-right");
-const grpahicsValues = document.getElementById("graphics-values");
+const grpahicsValues = document.getElementById("graphics-values")
 
 if (window.innerWidth < 650) {
     window.graphics = parseInt(localStorage.getItem("graphics") || 1);
@@ -45,15 +45,17 @@ const skillsText = document.getElementById("skills-text");
 document.addEventListener("mousemove", (event) => {
     if (window.graphics == 2) {
         skillsText.style.animation = "hover 5s ease-in-out infinite";
-    } else if (window.graphics < 2) {
+    }
+    if (window.graphics < 2) {
         skillsText.style.animation = "none";
-    } else if (window.graphics == 0) {
-        cursor.style.display = "none";
+    }
+    if (window.graphics == 0 || window.innerWidth < 650) {
+        cursor.style.opacity = 0;
         skillsText.style.textShadow = "unset";
 
         return;
     } else {
-        cursor.style.display = "block";
+        cursor.style.opacity = 1;
     }
 
     const {clientX, clientY} = event;

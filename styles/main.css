@@ -46,7 +46,7 @@ main .box {
 
     background-color: rgba(255, 255, 255, 0.05);
 
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(5px);
 
     box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.05),
     -3px -3px 10px rgba(0, 0, 0, 0.05);
@@ -113,6 +113,12 @@ main .skills-preview .background-text {
     justify-content: center;
 
     font-size: 6em;
+
+    /*text-shadow: #ccc -1px -1px 0px, #ccc -2px -2px 0px,
+        #ccc -3px -3px 0px, #ccc -4px -4px 0px,
+        #ccc -5px -5px 0px, #ccc -6px -6px 0px,
+        #ccc -7px -7px 0px, #ccc -8px -8px 0px,
+        #ccc -9px -9px 0px, #ccc -10px -10px 0px;*/
 
     opacity: calc((max(var(--scroll), 75) - 75) / 25);
 
@@ -195,6 +201,14 @@ main .skills-preview canvas {
 
         translate: 0;
         scale: 1;
+    }
+}
+
+@media (max-width: 650px) {
+    main .box {
+        background-color: rgba(255, 255, 255, 0.5);
+
+        backdrop-filter: unset;
     }
 }
 
