@@ -27,8 +27,21 @@
 }
 
 body {
+    position: relative;
+}
+
+body .body-background {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+
+    background-position: 0 calc(-0.5vh * var(--scroll));
+
     background-image: url("/images/bg-img.png");
     background-repeat: repeat;
+
+    opacity: 0.05;
 }
 
 .cursor {
