@@ -86,7 +86,7 @@ main .box a:hover i {
 }
 
 main .box.about {
-    translate: calc(-25% + (25%) * ((max(var(--scroll), 75) - 75) / 25)) 0;
+    translate: calc(-25% + 25% * ((max(min(var(--scroll), 100), 75) - 75) / 25)) 0;
 }
 
 main .box.projects {
@@ -99,8 +99,8 @@ main .skills-preview {
 
     position: relative;
 
-    translate: 0 calc(50% - 50% * ((max(var(--scroll), 25) - 25) / 75));
-    scale: calc(((max(var(--scroll), 50) - 50) / 50) / 2 + 0.5);
+    translate: 0 calc(50% - 50% * ((max(min(var(--scroll), 100), 25) - 25) / 75));
+    scale: calc(((max(min(var(--scroll), 100), 50) - 50) / 50) / 2 + 0.5);
     opacity: calc(((max(var(--scroll), 75) - 75) / 25));
 }
 

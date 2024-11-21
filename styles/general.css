@@ -22,10 +22,13 @@
     --scroll: 0;
 
     scrollbar-width: none;
+
+    background-color: var(--colour2);
 }
 
 body {
-    background-color: var(--colour2);
+    background-image: url("/images/bg-img.png");
+    background-repeat: repeat;
 }
 
 .cursor {

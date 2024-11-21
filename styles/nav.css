@@ -19,6 +19,21 @@ nav {
     z-index: 99;
 }
 
+nav .nav-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: calc(var(--nav-height) + 3em);
+
+    background-image: linear-gradient(var(--colour2), transparent);
+
+    opacity: calc((max(var(--scroll), 100) - 100) / 10);
+
+    z-index: -1;
+}
+
 nav .nav-overlay {
     position: fixed;
     inset: 0;
