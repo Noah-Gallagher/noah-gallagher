@@ -36,7 +36,7 @@ body .body-background {
     right: 0;
     height: 100%;
 
-    background-position: 0 calc(-0.5vh * var(--scroll));
+    background-position: 0 calc(-0.25% * var(--scroll));
 
     background-image: url("/images/bg-img.png");
     background-repeat: repeat;
